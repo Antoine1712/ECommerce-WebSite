@@ -11,33 +11,74 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel="stylesheet">
 </head>
 <body>
-    <!--Header-->
-    <header>
-        <!--Nav-->
-        <div class="nav container">
-            <a href="#" class="logo">Boutique</a>
-            <!--Icône panier-->
-            <i class='bx bx-shopping-bag' id="cart-icon"></i>
-            <!--Panier-->
-            <div class="cart">
-                <h2 class="cart-title">Votre panier</h2>
-                <!--Contenu-->
-                <div class="cart-content">
+<!--Header-->
+<header>
+    <!--Nav-->
+    <div class="nav container">
+        <a href="#" class="logo">Boutique</a>
 
-                </div>
-                <!--Total-->
-                <div class="total">
-                    <div class="total-title">Total</div>
-                    <div class="total-price">0 €</div>
-                </div>
-                <!--Bouton acheter-->
-                <button type="button" class="btn-buy">Buy Now</button>
-                <!--Fermer le panier-->
-                <i class='bx bx-x' id="close-cart"></i>
+        <!--Icône panier-->
+        <div class="cart-icon-container">
+            <i class='bx bx-shopping-bag' id="cart-icon"></i>
+            <span class="cart-count">0</span>
+        </div>
+
+        <!--Panier-->
+        <div class="cart">
+
+            <h2 class="cart-title">Votre panier</h2>
+
+            <!--Contenu-->
+            <div class="cart-content">
+
+                <!-- Message panier vide -->
+                <p class="empty-cart-message">Votre panier est vide.</p>
 
             </div>
+
+            <!-- Code promo -->
+            <div class="promo">
+                <input type="text" id="promo-code" placeholder="Code promo">
+                <button type="button" id="promo-button">Appliquer</button>
+                <p id="promo-message"></p>
+            </div>
+
+            <!-- Récapitulatif -->
+            <div class="cart-summary">
+
+                <div class="summary-line">
+                    <span>Sous-total</span>
+                    <span class="subtotal-price">0,00 €</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Livraison</span>
+                    <span class="shipping-price">4,99 €</span>
+                </div>
+
+                <div class="summary-line discount-line">
+                    <span>Réduction</span>
+                    <span class="discount-price">0,00 €</span>
+                </div>
+
+                <div class="total">
+                    <div class="total-title">Total TTC</div>
+                    <div class="total-price">0,00 €</div>
+                </div>
+
+            </div>
+
+            <!--Bouton acheter-->
+            <button type="button" class="btn-buy">
+                Passer la commande
+            </button>
+
+            <!--Fermer le panier-->
+            <i class='bx bx-x' id="close-cart"></i>
+
         </div>
-    </header>
+    </div>
+</header>
     <!--Boutique-->
     <section class="shop container">
         <h2 class="section-title">Nos produits</h2>
