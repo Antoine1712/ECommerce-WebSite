@@ -81,67 +81,262 @@
 </header>
     <!--Boutique-->
     <section class="shop container">
-        <h2 class="section-title">Nos produits</h2>
-        <!--Contenu-->
-        <div class="shop-content">
-            <!--Produit 1-->
-            <div class="product-box">
-                <img src="img/product1.jpg" alt="" class="product-img">
-                <h2 class="product-title">T-SHIRT ADDIDAS</h2>
-                <span class="price">25 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
-            <!--Produit 2-->
-            <div class="product-box">
-                <img src="img/product2.jpg" alt="" class="product-img">
-                <h2 class="product-title">AIR POD</h2>
-                <span class="price">100 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
-            <!--Produit 3-->
-            <div class="product-box">
-                <img src="img/product3.jpg" alt="" class="product-img">
-                <h2 class="product-title">HIVER PARKA</h2>
-                <span class="price">45 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
-            <!--Produit 4-->
-            <div class="product-box">
-                <img src="img/product4.jpg" alt="" class="product-img">
-                <h2 class="product-title">GOURDE EN METAL</h2>
-                <span class="price">24.04 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
-            <!--Produit 5-->
-            <div class="product-box">
-                <img src="img/product5.jpg" alt="" class="product-img">
-                <h2 class="product-title">LUNETTES DE SOLEIL</h2>
-                <span class="price">50 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
-            <!--Produit 6-->
-            <div class="product-box">
-                <img src="img/product6.1.jpg" alt="" class="product-img">
-                <h2 class="product-title">CASQUETTE</h2>
-                <span class="price">50 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
-            <!--Produit 7-->
-            <div class="product-box">
-                <img src="img/product7.jpg" alt="" class="product-img">
-                <h2 class="product-title">SAC A DOS</h2>
-                <span class="price">70 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
-            <!--Produit 8-->
-            <div class="product-box">
-                <img src="img/product8.jpg" alt="" class="product-img">
-                <h2 class="product-title">CHAUSSURE SPORT</h2>
-                <span class="price">45 €</span>
-                <i class='bx bx-shopping-bag add-cart'></i>
-            </div>
+        <h2 class="section-title">Nos produits</h2> 
+
+    <!-- Catégories -->
+<div class="category-container">
+
+    <button type="button" class="category-btn active" data-category="all">
+        Tous
+    </button>
+
+    <button type="button" class="category-btn" data-category="vetements">
+        Vêtements
+    </button>
+
+    <button type="button" class="category-btn" data-category="chaussures">
+        Chaussures
+    </button>
+
+    <button type="button" class="category-btn" data-category="accessoires">
+        Accessoires
+    </button>
+
+    <button type="button" class="category-btn" data-category="electronique">
+        Électronique
+    </button>
+
+</div>
+
+    <!-- Recherche -->
+    <div class="search-container">
+        <i class='bx bx-search'></i>
+        <input
+            type="text"
+            id="search-input"
+            placeholder="Rechercher un produit..."
+        >
+    </div>
+
+    <!-- Tri des produits -->
+<div class="sort-container">
+
+    <label for="sort-select">
+        Trier par :
+    </label>
+
+    <select id="sort-select">
+
+        <option value="default">
+            Pertinence
+        </option>
+
+        <option value="price-asc">
+            Prix croissant
+        </option>
+
+        <option value="price-desc">
+            Prix décroissant
+        </option>
+
+        <option value="name-asc">
+            Nom A → Z
+        </option>
+
+        <option value="name-desc">
+            Nom Z → A
+        </option>
+
+    </select>
+
+</div>
+
+    <!--Contenu-->
+    <div class="shop-content">
+
+    <!--Produit 1-->
+    <div class="product-box product-card" data-category="vetements" data-size-type="clothing"
+        data-description="T-shirt Adidas confortable et polyvalent, idéal pour un usage quotidien.">
+        <img src="img/product1.jpg" alt="" class="product-img">
+        <h2 class="product-title">T-SHIRT ADDIDAS</h2>
+        <span class="price">25 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+    <!--Produit 2-->
+    <div class="product-box product-card" data-category="electronique" data-size-type="none"
+        data-description="Écouteurs sans fil offrant une expérience audio pratique au quotidien.">
+        <img src="img/product2.jpg" alt="" class="product-img">
+        <h2 class="product-title">AIR POD</h2>
+        <span class="price">100 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+    <!--Produit 3-->
+    <div class="product-box product-card" data-category="vetements" data-size-type="clothing"
+        data-description="Parka chaude et confortable, idéale pour les journées froides.">
+        <img src="img/product3.jpg" alt="" class="product-img">
+        <h2 class="product-title">HIVER PARKA</h2>
+        <span class="price">45 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+    <!--Produit 4-->
+    <div class="product-box product-card" data-category="accessoires" data-size-type="none"
+        data-description="Gourde en métal pratique et résistante pour transporter vos boissons.">
+        <img src="img/product4.jpg" alt="" class="product-img">
+        <h2 class="product-title">GOURDE EN METAL</h2>
+        <span class="price">24.04 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+    <!--Produit 5-->
+    <div class="product-box product-card" data-category="accessoires" data-size-type="none"
+        data-description="Lunettes de soleil élégantes pour accompagner vos sorties en extérieur.">
+        <img src="img/product5.jpg" alt="" class="product-img">
+        <h2 class="product-title">LUNETTES DE SOLEIL</h2>
+        <span class="price">50 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+    <!--Produit 6-->
+    <div class="product-box product-card" data-category="accessoires" data-size-type="none"
+        data-description="Casquette confortable et facile à porter au quotidien.">
+        <img src="img/product6.1.jpg" alt="" class="product-img">
+        <h2 class="product-title">CASQUETTE</h2>
+        <span class="price">50 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+    <!--Produit 7-->
+    <div class="product-box product-card" data-category="accessoires" data-size-type="none"
+        data-description="Sac à dos pratique avec suffisamment d'espace pour vos affaires du quotidien.">
+        <img src="img/product7.jpg" alt="" class="product-img">
+        <h2 class="product-title">SAC A DOS</h2>
+        <span class="price">70 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+    <!--Produit 8-->
+    <div class="product-box product-card" data-category="chaussures" data-size-type="shoes"
+        data-description="Chaussures de sport confortables adaptées à vos activités quotidiennes.">
+        <img src="img/product8.jpg" alt="" class="product-img">
+        <h2 class="product-title">CHAUSSURE SPORT</h2>
+        <span class="price">45 €</span>
+        <i class='bx bx-heart favorite-icon'></i>
+        <i class='bx bx-shopping-bag add-cart'></i>
+    </div>
+
+</div>
+</section>
+
+<!-- ==============================
+     Fiche produit
+============================== -->
+
+<div class="product-modal">
+
+    <div class="product-modal-content">
+
+        <!-- Fermer -->
+        <i class='bx bx-x product-modal-close'></i>
+
+        <!-- Image -->
+        <div class="product-modal-image">
+            <img src="" alt="" id="modal-product-img">
         </div>
-    </section>
+
+        <!-- Informations -->
+        <div class="product-modal-details">
+
+            <h2 id="modal-product-title">
+                Nom du produit
+            </h2>
+
+            <div class="modal-product-price" id="modal-product-price">
+                0,00 €
+            </div>
+
+            <div class="modal-product-description">
+
+                <h3>Description</h3>
+
+                <p id="modal-product-description">
+                    Description du produit...
+                </p>
+
+            </div>
+
+            <!-- Taille -->
+            <div class="product-size" id="product-size-container">
+                <h3 id="product-size-label">Taille :</h3>
+
+            <div class="size-options" id="size-options">
+            <!-- Les tailles/pointures seront ajoutées automatiquement par JavaScript -->
+    </div>
+</div>
+
+            <!-- Quantité -->
+            <div class="modal-quantity">
+
+                <h3>Quantité :</h3>
+
+                <div class="modal-quantity-controls">
+
+                    <button type="button" id="modal-quantity-minus">
+                        −
+                    </button>
+
+                    <span id="modal-quantity">
+                        1
+                    </span>
+
+                    <button type="button" id="modal-quantity-plus">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Ajouter au panier -->
+            <button type="button" id="modal-add-cart">
+                Ajouter au panier
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ============================== -->
+<!-- Mes favoris -->
+<!-- ============================== -->
+
+<section class="favorites-section">
+
+    <div class="section-title">
+        <h2>Mes favoris</h2>
+    </div>
+
+    <div class="favorites-content" id="favorites-content">
+
+        <p class="empty-favorites">
+            Vous n'avez aucun produit en favori.
+        </p>
+
+    </div>
+
+</section>
+
     <!--Lien vers JS-->
     <script src="js/main.js"></script>
 
