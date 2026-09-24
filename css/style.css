@@ -1,5 +1,6 @@
 /* Google Fonts */
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap);
+
 *{
     font-family: "Poppins", sans-serif;
     margin: 0;
@@ -10,16 +11,34 @@
     list-style: none;
     text-decoration: none;
 }
-:root {
---main-color: #fd4646;
---text-color: #171427;
---bg-color: #fff;
+
+:root{
+    --main-color: #fd4646;
+    --text-color: #171427;
+    --bg-color: #fff;
+    --card-color: #fff;
+    --border-color: #e8e8e8;
+    --secondary-text: #777;
+    --shadow-color: rgba(0, 0, 0, 0.08);
 }
-img {
+
+/* Mode sombre */
+body.dark-mode{
+    --text-color: #f5f5f5;
+    --bg-color: #121212;
+    --card-color: #1e1e1e;
+    --border-color: #333;
+    --secondary-text: #aaa;
+    --shadow-color: rgba(0, 0, 0, 0.35);
+}
+
+img{
     width: 100%;
 }
-body {
+
+body{
     color: var(--text-color);
+    background: var(--bg-color);
 }
 .container{
     max-width: 1068px;
@@ -59,7 +78,7 @@ header {
 
 .category-btn {
     padding: 10px 18px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     background: var(--bg-color);
     color: var(--text-color);
@@ -102,11 +121,19 @@ header {
     width: 100%;
     height: 45px;
     padding: 0 20px 0 45px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
+    background: var(--card-color);
+    color: var(--text-color);
     border-radius: 8px;
     outline: none;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+#search-input::placeholder{
+    color: var(--secondary-text);
 }
 
 #search-input:focus {
@@ -132,14 +159,16 @@ header {
 
 #sort-select {
     padding: 9px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
-    background: var(--bg-color);
+    background: var(--card-color);
     color: var(--text-color);
     font-family: "Poppins", sans-serif;
     font-size: 14px;
     cursor: pointer;
     outline: none;
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
 #sort-select:focus {
@@ -152,11 +181,10 @@ header {
     font-weight: 400;
 }
 /* Icône panier + badge */ 
-.cart-icon-container { 
-    position: relative; 
+.cart-icon-container {  
     display: flex; 
     align-items: center; 
-    justify-content: center; 
+    gap : 15px;
 }
 #cart-icon {
     font-size: 1.8rem;
@@ -186,8 +214,8 @@ header {
     width: 360px;
     height: 100vh;
     padding: 20px;
-    background: var(--bg-color);
-    box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+    background: var(--card-color);
+    box-shadow: -8px 0 30px var(--shadow-color);
     overflow: hidden;
     transition: 0.3s;
 }
@@ -202,7 +230,7 @@ header {
 }
 .cart-title{
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     margin-top: 2rem;
 }
@@ -220,13 +248,19 @@ header {
     align-items: center;
     gap: 1rem;
     margin-top: 1rem;
+    margin-bottom: 12px;
     position: relative;
+    padding: 12px;
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
 }
 .cart-img{
     width: 90px;
     height: 90px;
     object-fit: contain;
     padding: 5px;
+    border-radius: 8px;
 }
 .detail-box{
     display: grid;
@@ -348,15 +382,20 @@ header {
     margin: 1.5rem auto 0 auto;
     padding: 12px 20px;
     border: none;
+    border-radius: 8px;
     background: var(--main-color);
     color: var(--bg-color);
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     font-family: "Poppins", sans-serif;
+    transition: transform 0.3s ease,
+                background-color 0.3s ease;
 }
+
 .btn-buy:hover{
     background: var(--text-color);
+    transform: translateY(-2px);
 }
 /* Fermer le panier */
 #close-cart{
@@ -384,37 +423,100 @@ header {
 }
 .product-box{
     position: relative;
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
 }
+
 .product-box:hover{
-    padding: 10px;
-    border: 1px solid var(--text-color);
-    transition: 0.4s;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px var(--shadow-color);
+    border-color: rgba(253, 70, 70, 0.35);
 }
 .product-img{
     width: 100%;
-    height: auto;
-    margin-bottom: 0.5rem;
+    height: 240px;
+    object-fit: contain;
+    margin-bottom: 0.8rem;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.product-box:hover .product-img{
+    transform: scale(1.05);
 }
 .product-title{
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
+    color: var(--text-color);
 }
+
 .price{
-    font-weight: 500;
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--main-color);
+    margin-top: 5px;
 }
+/* Bouton "Ajouter au panier" */
 .add-cart{
+    /* Positionne le cercle en bas à droite de la carte */
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 15px;
+    right: 15px;
+
+    /* Taille du cercle */
+    width: 42px;
+    height: 42px;
+
+    /* Centre l'icône à l'intérieur du cercle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Cercle noir */
     background: var(--text-color);
-    color: var(--bg-color);
-    padding: 10px;
+    border-radius: 50%;
+
+    /* Curseur */
     cursor: pointer;
+
+    /* Animation du cercle */
+    transition: transform 0.3s ease,
+                background-color 0.3s ease;
 }
+
+/* Icône du panier */
+.add-cart i{
+    /* Taille de l'icône */
+    font-size: 1.2rem;
+
+    /* Couleur de l'icône */
+    color: var(--bg-color);
+
+    /* Évite les décalages verticaux */
+    line-height: 1;
+
+    /* Place l'icône au-dessus du cercle */
+    position: relative;
+    z-index: 2;
+}
+
+/* Effet au survol */
 .add-cart:hover{
-    background: hsl(249,32%,17%);
+    /* Le cercle devient rouge */
+    background: var(--main-color);
+
+    /* Agrandit le cercle */
+    transform: scale(1.12);
 }
 /* Breakpoints / Making Responsive */
 @media (max-width: 1080px) {
@@ -476,9 +578,10 @@ header {
     max-width: 900px;
     max-height: 90vh;
     padding: 30px;
-    background: var(--bg-color);
+    background: var(--card-color);
     overflow-y: auto;
-    border-radius: 8px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .product-modal-image {
@@ -532,17 +635,25 @@ header {
     gap: 8px;
 }
 
-.size-btn {
+.size-btn{
     width: 45px;
     height: 40px;
-    border: 1px solid #ccc;
-    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--card-color);
+    color: var(--text-color);
     cursor: pointer;
     font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.2s ease;
 }
 
-.size-btn:hover,
-.size-btn.active {
+.size-btn:hover{
+    transform: translateY(-2px);
+}
+
+.size-btn.active{
     background: var(--text-color);
     color: var(--bg-color);
 }
@@ -580,16 +691,20 @@ header {
     margin-top: 25px;
     padding: 13px 20px;
     border: none;
+    border-radius: 8px;
     background: var(--main-color);
     color: var(--bg-color);
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
+    transition: transform 0.3s ease,
+                background-color 0.3s ease;
 }
 
 #modal-add-cart:hover {
     background: var(--text-color);
+    transform: translateY(-2px);
 }
 
 /* Fermer la fiche produit */
@@ -642,34 +757,29 @@ header {
 /* Favoris */
 /* ============================== */
 
-.favorite-icon {
+.favorite-icon{
     position: absolute;
     top: 15px;
     right: 15px;
-
-    font-size: 1.5rem;
-
+    font-size: 1.4rem;
     color: var(--text-color);
-
+    background: var(--card-color);
+    border-radius: 50%;
+    padding: 7px;
     cursor: pointer;
-
-    z-index: 5;
-
-    transition: 0.2s;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: transform 0.3s ease,
+                color 0.3s ease;
 }
 
-
-.favorite-icon:hover {
+.favorite-icon:hover{
     color: var(--main-color);
-
-    transform: scale(1.1);
+    transform: scale(1.12);
 }
-
 
 .favorite-icon.bxs-heart {
     color: var(--main-color);
 }
-
 
 /* ============================== */
 /* Section Mes favoris */
@@ -683,18 +793,15 @@ header {
     padding: 0 20px;
 }
 
-
 .favorites-section .section-title {
     margin-bottom: 25px;
 }
-
 
 .favorites-section .section-title h2 {
     font-size: 1.8rem;
 
     text-transform: uppercase;
 }
-
 
 .favorites-content {
     display: grid;
@@ -705,24 +812,16 @@ header {
     gap: 25px;
 }
 
-
 /* Produit favori */
 
-.favorite-product {
+.favorite-product{
     position: relative;
-
     padding: 15px;
-
-    background: var(--bg-color);
-
-    border: 1px solid #eee;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.08);
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-color);
 }
-
 
 .favorite-product img {
     width: 100%;
@@ -732,7 +831,6 @@ header {
     object-fit: contain;
 }
 
-
 .favorite-product h3 {
     margin-top: 10px;
 
@@ -741,7 +839,6 @@ header {
     text-transform: uppercase;
 }
 
-
 .favorite-product-price {
     display: block;
 
@@ -749,7 +846,6 @@ header {
 
     font-weight: 600;
 }
-
 
 .favorite-remove {
     position: absolute;
@@ -765,7 +861,6 @@ header {
     cursor: pointer;
 }
 
-
 .empty-favorites {
     width: 100%;
 
@@ -774,4 +869,127 @@ header {
     text-align: center;
 
     color: #777;
+}
+
+/* ==============================
+   Notes et avis
+   ============================== */
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.rating-stars {
+    color: #f5b301;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.rating-value {
+    font-weight: 600;
+}
+
+.rating-count {
+    color: #777;
+}
+
+/* ==============================
+   Avis fiche produit
+   ============================== */
+
+.modal-product-reviews {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.modal-product-reviews h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.modal-product-rating {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+#modal-rating-stars {
+    color: #f5b301;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+#modal-rating-value {
+    font-weight: 600;
+}
+
+#modal-rating-count {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.modal-review {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-review:last-child {
+    border-bottom: none;
+}
+
+.modal-review-stars {
+    color: #f5b301;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.modal-review p {
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+.product-badge{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.badge-new{
+    background: #2ecc71;
+}
+
+.badge-promo{
+    background: var(--main-color);
+}
+
+.badge-discount{
+    background: #f39c12;
+}
+
+#dark-mode-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+#dark-mode-toggle:hover{
+    transform: rotate(20deg) scale(1.1);
 }

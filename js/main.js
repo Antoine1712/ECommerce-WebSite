@@ -1274,10 +1274,23 @@ function openProductModal(event) {
             .getElementsByClassName("product-img")[0]
             .src;
 
-
     var description =
         selectedProduct
             .getAttribute("data-description");
+
+    var rating =
+        selectedProduct
+            .getAttribute("data-rating");
+
+    var reviewCount =
+        selectedProduct
+            .getAttribute("data-review-count");
+
+    var reviews =
+        JSON.parse(
+            selectedProduct
+                .getAttribute("data-reviews")
+        );
 
 
     // Récupérer le type de taille
@@ -1301,6 +1314,17 @@ function openProductModal(event) {
 
     document.getElementById("modal-product-description")
         .innerText = description;
+    
+    document.getElementById("modal-rating-stars")
+        .innerText = getRatingStars(rating);
+
+    document.getElementById("modal-rating-value")
+        .innerText = rating.replace(".", ",") + "/5";
+
+    document.getElementById("modal-rating-count")
+        .innerText = "(" + reviewCount + " avis)";
+
+    displayProductReviews(reviews);
 
 
     // Réinitialiser la quantité
@@ -1322,6 +1346,58 @@ function openProductModal(event) {
         .classList.add("active");
 
 }
+
+function getRatingStars(rating) {
+
+    var value = parseFloat(rating);
+
+    var fullStars = Math.floor(value);
+
+    var hasHalfStar = value % 1 >= 0.5;
+
+    var stars = "";
+
+    for (var i = 0; i < fullStars; i++) {
+
+        stars += "★";
+    }
+
+    if (hasHalfStar) {
+
+        stars += "½";
+    }
+
+    return stars;
+}
+
+function displayProductReviews(reviews) {
+
+    var reviewsList =
+        document.getElementById("modal-reviews-list");
+
+    reviewsList.innerHTML = "";
+
+    for (var i = 0; i < reviews.length; i++) {
+
+        var review =
+            document.createElement("div");
+
+        review.classList.add("modal-review");
+
+        review.innerHTML = `
+            <div class="modal-review-stars">
+                ★★★★★
+            </div>
+
+            <p>
+                ${reviews[i]}
+            </p>
+        `;
+
+        reviewsList.appendChild(review);
+    }
+}
+
 
 // ==============================
 // Afficher les tailles
@@ -1879,3 +1955,44 @@ function removeFavorite(title) {
 
     displayFavorites();
 }
+
+// ==============================
+// Mode sombre
+// ==============================
+
+var darkModeToggle =
+    document.getElementById("dark-mode-toggle");
+
+
+// Vérifier si le mode sombre était déjà activé
+if (localStorage.getItem("darkMode") === "enabled") {
+
+    document.body.classList.add("dark-mode");
+
+    darkModeToggle.classList.remove("bx-moon");
+    darkModeToggle.classList.add("bx-sun");
+}
+
+
+// Activer / désactiver le mode sombre
+darkModeToggle.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+
+
+    if (document.body.classList.contains("dark-mode")) {
+
+        localStorage.setItem("darkMode", "enabled");
+
+        darkModeToggle.classList.remove("bx-moon");
+        darkModeToggle.classList.add("bx-sun");
+
+    } else {
+
+        localStorage.setItem("darkMode", "disabled");
+
+        darkModeToggle.classList.remove("bx-sun");
+        darkModeToggle.classList.add("bx-moon");
+    }
+
+});
